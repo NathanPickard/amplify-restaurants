@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { APIService } from './API.service';
 import { Restaurant } from '../types/restaurant';
 
@@ -12,6 +13,8 @@ export class AppComponent implements OnInit {
   title = 'amplify-restaurants';
   public createForm: FormGroup;
 
+  restaurants: Array<Restaurant>;
+
   constructor(private api: APIService, private fb: FormBuilder) { }
 
   async ngOnInit() {
@@ -19,6 +22,15 @@ export class AppComponent implements OnInit {
       'name': ['', Validators.required],
       'description': ['', Validators.required],
       'city': ['', Validators.required]
+    });
+
+    this.api.ListRestaurants().then(event => {
+      this.restaurants = event.items;
+    });
+
+    this.api.OnCreateRestaurantListener.subscribe((event: any) => {
+      const newRestaurant = event.value.data.onCreateRestaurant;
+      this.restaurants = [newRestaurant, ...this.restaurants];
     });
   }
 
