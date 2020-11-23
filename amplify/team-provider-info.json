@@ -9,6 +9,11 @@
             "UnauthRoleName": "amplify-amplify-restaurants-dev-133255-unauthRole",
             "StackName": "amplify-amplify-restaurants-dev-133255",
             "StackId": "arn:aws:cloudformation:us-west-2:854875202353:stack/amplify-amplify-restaurants-dev-133255/f3f1e130-2b77-11eb-83aa-0a6b23e69579"
+        },
+        "categories": {
+            "auth": {
+                "amplifyrestaurants84ee0786": {}
+            }
         }
     }
 }

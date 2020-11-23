@@ -16,5 +16,12 @@
 				}
 			}
 		}
+	},
+	"auth": {
+		"amplifyrestaurants84ee0786": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
 	}
 }
