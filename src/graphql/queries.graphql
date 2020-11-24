@@ -5,6 +5,8 @@ query GetRestaurant($id: ID!) {
     name
     description
     city
+    createdAt
+    updatedAt
   }
 }
 query ListRestaurants(
@@ -18,6 +20,8 @@ query ListRestaurants(
       name
       description
       city
+      createdAt
+      updatedAt
     }
     nextToken
   }

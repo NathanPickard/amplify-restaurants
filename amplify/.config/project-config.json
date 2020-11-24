@@ -1,17 +1,17 @@
 {
-    "projectName": "amplify-restaurants",
-    "version": "2.0",
-    "frontend": "javascript",
-    "javascript": {
-        "framework": "angular",
-        "config": {
-            "SourceDir": "src",
-            "DistributionDir": "dist/amplify-restaurants",
-            "BuildCommand": "npm run-script build",
-            "StartCommand": "ng serve"
-        }
-    },
-    "providers": [
-        "awscloudformation"
-    ]
+  "projectName": "amplifyrestaurants",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "angular",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist/amplify-restaurants",
+      "BuildCommand": "npm run-script build",
+      "StartCommand": "ng serve"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
 }

@@ -1,15 +1,67 @@
 /* tslint:disable */
+/* eslint-disable */
 //  This file was automatically generated and should not be edited.
 import { Injectable } from "@angular/core";
-import API, { graphqlOperation } from "@aws-amplify/api";
-import { GraphQLResult } from "@aws-amplify/api/lib/types";
-import * as Observable from "zen-observable";
+import API, { graphqlOperation, GraphQLResult } from "@aws-amplify/api-graphql";
+import { Observable } from "zen-observable-ts";
+
+export interface SubscriptionResponse<T> {
+  value: GraphQLResult<T>;
+}
 
 export type CreateRestaurantInput = {
   id?: string | null;
   name: string;
   description: string;
   city: string;
+};
+
+export type ModelRestaurantConditionInput = {
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelRestaurantConditionInput | null> | null;
+  or?: Array<ModelRestaurantConditionInput | null> | null;
+  not?: ModelRestaurantConditionInput | null;
+};
+
+export type ModelStringInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+  size?: ModelSizeInput | null;
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null"
+}
+
+export type ModelSizeInput = {
+  ne?: number | null;
+  eq?: number | null;
+  le?: number | null;
+  lt?: number | null;
+  ge?: number | null;
+  gt?: number | null;
+  between?: Array<number | null> | null;
 };
 
 export type UpdateRestaurantInput = {
@@ -24,16 +76,16 @@ export type DeleteRestaurantInput = {
 };
 
 export type ModelRestaurantFilterInput = {
-  id?: ModelIDFilterInput | null;
-  name?: ModelStringFilterInput | null;
-  description?: ModelStringFilterInput | null;
-  city?: ModelStringFilterInput | null;
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  city?: ModelStringInput | null;
   and?: Array<ModelRestaurantFilterInput | null> | null;
   or?: Array<ModelRestaurantFilterInput | null> | null;
   not?: ModelRestaurantFilterInput | null;
 };
 
-export type ModelIDFilterInput = {
+export type ModelIDInput = {
   ne?: string | null;
   eq?: string | null;
   le?: string | null;
@@ -44,19 +96,9 @@ export type ModelIDFilterInput = {
   notContains?: string | null;
   between?: Array<string | null> | null;
   beginsWith?: string | null;
-};
-
-export type ModelStringFilterInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+  size?: ModelSizeInput | null;
 };
 
 export type CreateRestaurantMutation = {
@@ -65,6 +107,8 @@ export type CreateRestaurantMutation = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type UpdateRestaurantMutation = {
@@ -73,6 +117,8 @@ export type UpdateRestaurantMutation = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type DeleteRestaurantMutation = {
@@ -81,6 +127,8 @@ export type DeleteRestaurantMutation = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type GetRestaurantQuery = {
@@ -89,6 +137,8 @@ export type GetRestaurantQuery = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ListRestaurantsQuery = {
@@ -99,6 +149,8 @@ export type ListRestaurantsQuery = {
     name: string;
     description: string;
     city: string;
+    createdAt: string;
+    updatedAt: string;
   } | null> | null;
   nextToken: string | null;
 };
@@ -109,6 +161,8 @@ export type OnCreateRestaurantSubscription = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type OnUpdateRestaurantSubscription = {
@@ -117,6 +171,8 @@ export type OnUpdateRestaurantSubscription = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type OnDeleteRestaurantSubscription = {
@@ -125,6 +181,8 @@ export type OnDeleteRestaurantSubscription = {
   name: string;
   description: string;
   city: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 @Injectable({
@@ -132,60 +190,78 @@ export type OnDeleteRestaurantSubscription = {
 })
 export class APIService {
   async CreateRestaurant(
-    input: CreateRestaurantInput
+    input: CreateRestaurantInput,
+    condition?: ModelRestaurantConditionInput
   ): Promise<CreateRestaurantMutation> {
-    const statement = `mutation CreateRestaurant($input: CreateRestaurantInput!) {
-        createRestaurant(input: $input) {
+    const statement = `mutation CreateRestaurant($input: CreateRestaurantInput!, $condition: ModelRestaurantConditionInput) {
+        createRestaurant(input: $input, condition: $condition) {
           __typename
           id
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
       input
     };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <CreateRestaurantMutation>response.data.createRestaurant;
   }
   async UpdateRestaurant(
-    input: UpdateRestaurantInput
+    input: UpdateRestaurantInput,
+    condition?: ModelRestaurantConditionInput
   ): Promise<UpdateRestaurantMutation> {
-    const statement = `mutation UpdateRestaurant($input: UpdateRestaurantInput!) {
-        updateRestaurant(input: $input) {
+    const statement = `mutation UpdateRestaurant($input: UpdateRestaurantInput!, $condition: ModelRestaurantConditionInput) {
+        updateRestaurant(input: $input, condition: $condition) {
           __typename
           id
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
       input
     };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <UpdateRestaurantMutation>response.data.updateRestaurant;
   }
   async DeleteRestaurant(
-    input: DeleteRestaurantInput
+    input: DeleteRestaurantInput,
+    condition?: ModelRestaurantConditionInput
   ): Promise<DeleteRestaurantMutation> {
-    const statement = `mutation DeleteRestaurant($input: DeleteRestaurantInput!) {
-        deleteRestaurant(input: $input) {
+    const statement = `mutation DeleteRestaurant($input: DeleteRestaurantInput!, $condition: ModelRestaurantConditionInput) {
+        deleteRestaurant(input: $input, condition: $condition) {
           __typename
           id
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
       input
     };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
@@ -199,6 +275,8 @@ export class APIService {
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -223,6 +301,8 @@ export class APIService {
             name
             description
             city
+            createdAt
+            updatedAt
           }
           nextToken
         }
@@ -243,7 +323,7 @@ export class APIService {
     return <ListRestaurantsQuery>response.data.listRestaurants;
   }
   OnCreateRestaurantListener: Observable<
-    OnCreateRestaurantSubscription
+    SubscriptionResponse<OnCreateRestaurantSubscription>
   > = API.graphql(
     graphqlOperation(
       `subscription OnCreateRestaurant {
@@ -253,13 +333,15 @@ export class APIService {
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`
     )
-  ) as Observable<OnCreateRestaurantSubscription>;
+  ) as Observable<SubscriptionResponse<OnCreateRestaurantSubscription>>;
 
   OnUpdateRestaurantListener: Observable<
-    OnUpdateRestaurantSubscription
+    SubscriptionResponse<OnUpdateRestaurantSubscription>
   > = API.graphql(
     graphqlOperation(
       `subscription OnUpdateRestaurant {
@@ -269,13 +351,15 @@ export class APIService {
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`
     )
-  ) as Observable<OnUpdateRestaurantSubscription>;
+  ) as Observable<SubscriptionResponse<OnUpdateRestaurantSubscription>>;
 
   OnDeleteRestaurantListener: Observable<
-    OnDeleteRestaurantSubscription
+    SubscriptionResponse<OnDeleteRestaurantSubscription>
   > = API.graphql(
     graphqlOperation(
       `subscription OnDeleteRestaurant {
@@ -285,8 +369,10 @@ export class APIService {
           name
           description
           city
+          createdAt
+          updatedAt
         }
       }`
     )
-  ) as Observable<OnDeleteRestaurantSubscription>;
+  ) as Observable<SubscriptionResponse<OnDeleteRestaurantSubscription>>;
 }

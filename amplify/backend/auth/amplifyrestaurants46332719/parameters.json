@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "amplifyrestaurants84ee0786_identitypool_84ee0786",
+    "identityPoolName": "amplifyrestaurants46332719_identitypool_46332719",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "amplif84ee0786",
-    "userPoolName": "amplifyrestaurants84ee0786_userpool_84ee0786",
+    "resourceNameTruncated": "amplif46332719",
+    "userPoolName": "amplifyrestaurants46332719_userpool_46332719",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "amplif84ee0786_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "amplif46332719_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "amplifyrestaurants84ee0786",
+    "sharedId": "46332719",
+    "resourceName": "amplifyrestaurants46332719",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,5 +46,7 @@
         ]
     },
     "useDefault": "default",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
     "dependsOn": []
 }
