@@ -31,5 +31,12 @@
       "providerPlugin": "awscloudformation",
       "type": "manual"
     }
+  },
+  "interactions": {
+    "ChatBot": {
+      "service": "Lex",
+      "providerPlugin": "awscloudformation",
+      "build": true
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
     "identityPoolName": "amplifyrestaurants46332719_identitypool_46332719",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "amplif46332719",
     "userPoolName": "amplifyrestaurants46332719_userpool_46332719",
     "autoVerifiedAttributes": [

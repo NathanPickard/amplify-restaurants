@@ -1,26 +1,26 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-amplifyrestaurants-dev-170453-authRole",
-            "UnauthRoleArn": "arn:aws:iam::854875202353:role/amplify-amplifyrestaurants-dev-170453-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::854875202353:role/amplify-amplifyrestaurants-dev-170453-authRole",
-            "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-amplifyrestaurants-dev-170453-deployment",
-            "UnauthRoleName": "amplify-amplifyrestaurants-dev-170453-unauthRole",
-            "StackName": "amplify-amplifyrestaurants-dev-170453",
-            "StackId": "arn:aws:cloudformation:us-west-2:854875202353:stack/amplify-amplifyrestaurants-dev-170453/10c92cc0-2df1-11eb-aa78-0af4907f60fd",
-            "AmplifyAppId": "d17actu5we44i"
-        },
-        "categories": {
-            "auth": {
-                "amplifyrestaurants46332719": {}
-            },
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "d17actu5we44i",
-                    "type": "manual"
-                }
-            }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyrestaurants-dev-170453-authRole",
+      "UnauthRoleArn": "arn:aws:iam::854875202353:role/amplify-amplifyrestaurants-dev-170453-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::854875202353:role/amplify-amplifyrestaurants-dev-170453-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-amplifyrestaurants-dev-170453-deployment",
+      "UnauthRoleName": "amplify-amplifyrestaurants-dev-170453-unauthRole",
+      "StackName": "amplify-amplifyrestaurants-dev-170453",
+      "StackId": "arn:aws:cloudformation:us-west-2:854875202353:stack/amplify-amplifyrestaurants-dev-170453/10c92cc0-2df1-11eb-aa78-0af4907f60fd",
+      "AmplifyAppId": "d17actu5we44i"
+    },
+    "categories": {
+      "auth": {
+        "amplifyrestaurants46332719": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d17actu5we44i",
+          "type": "manual"
         }
+      }
     }
+  }
 }
